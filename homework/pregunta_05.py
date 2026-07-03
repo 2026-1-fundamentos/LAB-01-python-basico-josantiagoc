@@ -15,7 +15,7 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
-    file = "files\input\data.csv"
+    file = "files/input/data.csv" 
     pairs_sequence = []
     with open(file, "r", encoding="utf-8") as f:
         for line in f:
@@ -45,7 +45,7 @@ def pregunta_05():
                 min_num = valueMin    
             else:
                 min_num = ultimoMin
-                
+
             result[-1] = (key, max_num, min_num)
         else:
             result.append((key, valueMax, valueMin)) 

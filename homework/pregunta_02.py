@@ -14,7 +14,7 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
-    file = "files\input\data.csv"
+    file = "files/input/data.csv" 
     pairs_sequence = []
     with open(file, "r", encoding="utf-8") as f:
         for line in f:
