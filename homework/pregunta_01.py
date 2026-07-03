@@ -13,7 +13,7 @@ def pregunta_01():
     214
 
     """
-    ruta = "files\input\data.csv"
+    ruta = "files/input/data.csv" 
     suma = 0
     with open(ruta, mode="r", encoding="utf-8") as archivo:
         for linea in archivo:
