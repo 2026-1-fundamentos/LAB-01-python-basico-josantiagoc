@@ -27,3 +27,28 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split("\t")
+
+            word = columns[0]
+            num = int(columns[1])
+
+            if word:
+                pairs_sequence.append((num, word))
+                
+    pairs_sequence = sorted(pairs_sequence)
+
+    result = []
+    for value, key in pairs_sequence:
+        if result and result[-1][0] == value:    
+                if key not in result[-1][1]:        
+                    result[-1][1].append(key)
+        else:
+            result.append((value , [key]))       
+
+    return result
+print(pregunta_08())

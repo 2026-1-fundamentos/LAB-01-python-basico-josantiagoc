@@ -15,3 +15,27 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split("\t")
+
+            word = columns[0]
+            num = columns[1]
+
+            if word:
+                pairs_sequence.append((word, num))
+                
+    pairs_sequence = sorted(pairs_sequence)
+
+    result = []
+    for key, value in pairs_sequence:
+        if result and result[-1][0] == key:
+            suma = int(result[-1][1])
+            result[-1] = (key, suma + int(value))
+        else:
+            result.append((key, value)) 
+
+    return result
+print(pregunta_03())

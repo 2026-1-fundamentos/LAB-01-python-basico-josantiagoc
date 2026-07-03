@@ -20,3 +20,22 @@ def pregunta_10():
 
 
     """
+
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split()
+
+            word = columns[0]
+
+            parte_letras = len(columns[3].split(","))
+
+            parte_diccionario = len(columns[4].split(","))
+
+            if word:
+                pairs_sequence.append((word, parte_letras, parte_diccionario))
+            
+    return pairs_sequence
+
+print(pregunta_10())

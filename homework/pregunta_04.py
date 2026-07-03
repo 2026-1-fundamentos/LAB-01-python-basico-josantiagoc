@@ -26,3 +26,29 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split("\t")
+
+            columna_fecha = columns[2]
+
+            parte_mes = columna_fecha.split("-")
+
+            mes = parte_mes[1]
+
+            if mes:
+                pairs_sequence.append((mes, 1))
+                
+    pairs_sequence = sorted(pairs_sequence)
+
+    result = []
+    for key, value in pairs_sequence:
+        if result and result[-1][0] == key:
+            result[-1] = (key, result[-1][1] + value)
+        else:
+            result.append((key, value)) 
+
+    return result
+print(pregunta_04())

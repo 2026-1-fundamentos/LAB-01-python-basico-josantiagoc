@@ -24,3 +24,35 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split()
+
+            columna_diccionario = columns[4]
+
+            particion = columna_diccionario.split(",")
+
+            for clave_valor in particion:
+
+                columna_clave_valor = clave_valor.split(":")
+
+                clave = columna_clave_valor[0]
+
+                if clave:
+                    pairs_sequence.append((clave, 1))
+                
+    pairs_sequence = sorted(pairs_sequence)
+
+    result = []
+    for key, value in pairs_sequence:
+        if result and result[-1][0] == key:
+
+           result[-1] = (key, result[-1][1] + value)
+        else:
+            result.append((key, value)) 
+    diccionario = {clave: valor for clave, valor in result}        
+
+    return diccionario
+print(pregunta_09())

@@ -15,3 +15,41 @@ def pregunta_05():
     [('A', 9, 2), ('B', 9, 1), ('C', 9, 0), ('D', 8, 3), ('E', 9, 1)]
 
     """
+    file = "files\input\data.csv"
+    pairs_sequence = []
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            columns = line.strip().split("\t")
+
+            word = columns[0]
+            num = int(columns[1])
+
+            if word:
+                pairs_sequence.append((word, num, num))
+                
+    pairs_sequence = sorted(pairs_sequence)
+
+    result = []
+    for key, valueMax, valueMin in pairs_sequence:
+        if result and result[-1][0] == key:
+
+            ultimoMax = result[-1][1]
+            ultimoMin = result[-1][2]
+
+            if valueMax > ultimoMax:
+                max_num = valueMax
+            else:
+                max_num = ultimoMax
+
+            if valueMin < ultimoMin:
+                min_num = valueMin    
+            else:
+                min_num = ultimoMin
+                
+            result[-1] = (key, max_num, min_num)
+        else:
+            result.append((key, valueMax, valueMin)) 
+
+    return result
+
+print(pregunta_05())
